@@ -1,0 +1,73 @@
+
+PLAY [Say hello as actor via task include] ***************************************************************
+
+TASK [Show actor name] ***********************************************************************************
+ok: [host_alice] => {}
+
+MSG:
+
+alice
+ok: [host_bob] => {}
+
+MSG:
+
+bob
+
+TASK [Debug it] ******************************************************************************************
+included: /home/proto/projects/ansible_include_role_bug/roles/foobar/tasks/hello_alice.yml for host_alice
+included: /home/proto/projects/ansible_include_role_bug/roles/foobar/tasks/hello_bob.yml for host_bob
+
+TASK [Hello Alice (alice)] *******************************************************************************
+ok: [host_alice] => {}
+
+MSG:
+
+Hello Alice (alice): alice is testing task includes
+
+TASK [Hello Bob (bob)] ***********************************************************************************
+ok: [host_bob] => {}
+
+MSG:
+
+Hello Bob (bob): bob is testing task includes
+
+TASK [Now debug with single item loop] *******************************************************************
+included: /home/proto/projects/ansible_include_role_bug/roles/foobar/tasks/hello_alice.yml for host_alice
+included: /home/proto/projects/ansible_include_role_bug/roles/foobar/tasks/hello_bob.yml for host_bob
+
+TASK [Hello Alice (alice)] *******************************************************************************
+ok: [host_alice] => {}
+
+MSG:
+
+Hello Alice (alice): alice is testing task includes
+
+TASK [Hello Bob (bob)] ***********************************************************************************
+ok: [host_bob] => {}
+
+MSG:
+
+Hello Bob (bob): bob is testing task includes
+
+TASK [Debug as normal again] *****************************************************************************
+included: /home/proto/projects/ansible_include_role_bug/roles/foobar/tasks/hello_alice.yml for host_alice
+included: /home/proto/projects/ansible_include_role_bug/roles/foobar/tasks/hello_bob.yml for host_bob
+
+TASK [Hello Alice (alice)] *******************************************************************************
+ok: [host_alice] => {}
+
+MSG:
+
+Hello Alice (alice): alice is testing task includes
+
+TASK [Hello Bob (bob)] ***********************************************************************************
+ok: [host_bob] => {}
+
+MSG:
+
+Hello Bob (bob): bob is testing task includes
+
+PLAY RECAP ***********************************************************************************************
+host_alice                 : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+host_bob                   : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

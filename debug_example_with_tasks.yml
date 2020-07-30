@@ -1,0 +1,17 @@
+- name: Say hello as actor via task include
+  hosts: all
+  gather_facts: false
+  vars:
+    hello_world: "{{actor_name}} is testing task includes"
+  tasks:
+    - name: Show actor name
+      debug:
+        msg: "{{actor_name}}"
+    - name: Debug it
+      include_tasks: 'roles/foobar/tasks/hello_{{actor_name}}.yml'
+    - name: Now debug with single item loop
+      include_tasks: 'roles/foobar/tasks/hello_{{item}}.yml'
+      loop:
+        - '{{ actor_name }}'
+    - name: Debug as normal again
+      include_tasks: 'roles/foobar/tasks/hello_{{actor_name}}.yml'
