@@ -1,0 +1,24 @@
+- name: Say hello as actor via role include
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Show actor name
+      debug:
+        msg: "{{actor_name}}"
+    - name: Debug it
+      include_role:
+        name: foobar
+        defaults_from: '{{actor_name}}'
+        tasks_from: 'hello_{{actor_name}}'
+    - name: Now debug with single item loop
+      include_role:
+        name: foobar
+        defaults_from: '{{item}}'
+        tasks_from: 'hello_{{item}}'
+      loop:
+        - '{{ actor_name }}'
+    - name: Debug as normal again
+      include_role:
+        name: foobar
+        defaults_from: '{{actor_name}}'
+        tasks_from: 'hello_{{actor_name}}'

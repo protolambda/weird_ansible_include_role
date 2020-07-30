@@ -1,0 +1,8 @@
+all:
+  hosts:
+    host_alice:
+      ansible_host: localhost
+      actor_name: alice
+    host_bob:
+      ansible_host: localhost
+      actor_name: bob

@@ -1,0 +1,63 @@
+
+PLAY [Say hello as actor via role include] ***************************************************************
+
+TASK [Show actor name] ***********************************************************************************
+ok: [host_alice] => {}
+
+MSG:
+
+alice
+ok: [host_bob] => {}
+
+MSG:
+
+bob
+
+TASK [Debug it] ******************************************************************************************
+
+TASK [foobar : Hello Alice (alice)] **********************************************************************
+ok: [host_alice] => {}
+
+MSG:
+
+Hello Alice (alice): Alice is here!
+ok: [host_bob] => {}
+
+MSG:
+
+Hello Alice (bob): Alice is here!
+
+TASK [Now debug with single item loop] *******************************************************************
+
+TASK [foobar : Hello Alice (alice)] **********************************************************************
+ok: [host_alice] => {}
+
+MSG:
+
+Hello Alice (alice): Alice is here!
+
+TASK [foobar : Hello Bob (bob)] **************************************************************************
+ok: [host_bob] => {}
+
+MSG:
+
+Hello Bob (bob): A wild Bob appears!
+
+TASK [Debug as normal again] *****************************************************************************
+
+TASK [foobar : Hello Alice (alice)] **********************************************************************
+ok: [host_alice] => {}
+
+MSG:
+
+Hello Alice (alice): Alice is here!
+ok: [host_bob] => {}
+
+MSG:
+
+Hello Alice (bob): Alice is here!
+
+PLAY RECAP ***********************************************************************************************
+host_alice                 : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+host_bob                   : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
